@@ -994,6 +994,11 @@ ContainerSpecial_t Container::getSpecialCategory(const std::shared_ptr<Player> &
 
 	if (getHoldingPlayer() == player) {
 		if (isQuiver()) {
+			ObjectCategory_t category = g_game().getObjectCategory(getItem());
+			if (category == OBJECTCATEGORY_AMMO) {
+				return ContainerSpecial_t::QuiverLoot;
+			}
+
 			return ContainerSpecial_t::ContentCounter;
 		}
 
