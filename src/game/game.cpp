@@ -3139,10 +3139,9 @@ ObjectCategory_t Game::getObjectCategory(std::shared_ptr<Item> item) {
 	}
 
 	const ItemType &it = Item::items[item->getID()];
-	auto slot = item->getSlotPosition();
 	if (item->getWorth() != 0) {
 		category = OBJECTCATEGORY_GOLD;
-	} else if (item->isQuiver() && slot & SLOTP_RIGHT) {
+	} else if (item->isQuiver() && item->getSlotPosition() & SLOTP_RIGHT) {
 		category = OBJECTCATEGORY_AMMO;
 	} else {
 		category = getObjectCategory(it);
